@@ -260,6 +260,19 @@
                         </xs:choice>
                     </xs:complexType>
                 </xs:element>
+                <xs:element name="brands" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element name="brand" minOccurs="1">
+                                <xs:complexType>
+                                    <xs:attribute name="name" type="g_string"/>
+                                    <xs:attribute name="title" type="g_string"/>
+                                    <xs:attribute name="image" type="g_string"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
                 <xs:element name="specializations" minOccurs="0" maxOccurs="1">
                     <xs:complexType>
                         <xs:choice maxOccurs="unbounded">

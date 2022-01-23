@@ -220,7 +220,7 @@
                 <xs:element name="storeItems" minOccurs="0" maxOccurs="1">
                     <xs:complexType>
                         <xs:choice maxOccurs="unbounded">
-                            <xs:element name="storeItem" minOccurs="0">
+                            <xs:element name="storeItem" minOccurs="1">
                                 <xs:complexType>
                                     <xs:attribute name="xmlFilename" type="g_string"/>
                                 </xs:complexType>
@@ -231,10 +231,10 @@
                 <xs:element name="vehicleTypes" minOccurs="0" maxOccurs="1">
                     <xs:complexType>
                         <xs:choice maxOccurs="unbounded">
-                            <xs:element name="type" minOccurs="0">
+                            <xs:element name="type" minOccurs="1">
                                 <xs:complexType>
                                     <xs:choice maxOccurs="unbounded">
-                                        <xs:element name="specialization" minOccurs="0">
+                                        <xs:element name="specialization" minOccurs="1">
                                             <xs:complexType>
                                                 <xs:attribute name="name" type="g_string"/>
                                             </xs:complexType>
@@ -251,15 +251,8 @@
                 <xs:element name="brandColors" minOccurs="0" maxOccurs="1">
                     <xs:complexType>
                         <xs:choice maxOccurs="unbounded">
-                            <xs:element name="color" minOccurs="0">
+                            <xs:element name="color" minOccurs="1">
                                 <xs:complexType>
-                                    <xs:choice maxOccurs="unbounded">
-                                        <xs:element name="specialization" minOccurs="0">
-                                            <xs:complexType>
-                                                <xs:attribute name="name" type="g_string"/>
-                                            </xs:complexType>
-                                        </xs:element>
-                                    </xs:choice>
                                     <xs:attribute name="name" type="g_string"/>
                                     <xs:attribute name="value" type="g_vector_4"/>
                                 </xs:complexType>
@@ -270,7 +263,7 @@
                 <xs:element name="specializations" minOccurs="0" maxOccurs="1">
                     <xs:complexType>
                         <xs:choice maxOccurs="unbounded">
-                            <xs:element name="specialization" minOccurs="0">
+                            <xs:element name="specialization" minOccurs="1">
                                 <xs:complexType>
                                     <xs:attribute name="name" type="g_string"/>
                                     <xs:attribute name="className" type="g_string"/>

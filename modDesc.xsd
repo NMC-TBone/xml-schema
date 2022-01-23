@@ -148,7 +148,7 @@
                     <xs:complexType>
                         <xs:all>
                             <xs:element name="en" type="g_string" minOccurs="1"/>
-                            <xs:element name="de" type="g_string" minOccurs="0"/>
+                            <xs:element name="de" type="g_string" minOccurs="1"/>
                             <xs:element name="jp" type="g_string" minOccurs="0"/>
                             <xs:element name="pl" type="g_string" minOccurs="0"/>
                             <xs:element name="cz" type="g_string" minOccurs="0"/>
@@ -187,7 +187,7 @@
                                 <xs:complexType>
                                     <xs:all>
                                         <xs:element name="en" type="g_string" minOccurs="1"/>
-                                        <xs:element name="de" type="g_string" minOccurs="1"/>
+                                        <xs:element name="de" type="g_string" minOccurs="0"/>
                                         <xs:element name="jp" type="g_string" minOccurs="0"/>
                                         <xs:element name="pl" type="g_string" minOccurs="0"/>
                                         <xs:element name="cz" type="g_string" minOccurs="0"/>

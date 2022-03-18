@@ -225,8 +225,6 @@
                             <xs:element name="storeItem" minOccurs="1">
                                 <xs:complexType>
                                     <xs:attribute name="xmlFilename" type="g_string"/>
-                                </xs:complexType>
-                                <xs:complexType>
                                     <xs:attribute name="rootNode" type="g_string"/>
                                 </xs:complexType>
                             </xs:element>

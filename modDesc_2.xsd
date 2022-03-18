@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- New -->
+<!-- 18.03.2022 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:simpleType name="g_hyphen">
         <xs:restriction base="xs:string">

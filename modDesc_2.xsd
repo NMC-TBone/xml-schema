@@ -179,6 +179,7 @@
                 <xs:element name="multiplayer" minOccurs="1">
                     <xs:complexType>
                         <xs:attribute name="supported" type="g_bool" default="true"/>
+                        <xs:attribute name="only" type="g_bool" default="true"/>
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="l10n" minOccurs="0" maxOccurs="1">
@@ -225,6 +226,9 @@
                                 <xs:complexType>
                                     <xs:attribute name="xmlFilename" type="g_string"/>
                                 </xs:complexType>
+                                <xs:complexType>
+                                    <xs:attribute name="rootNode" type="g_string"/>
+                                </xs:complexType>
                             </xs:element>
                         </xs:choice>
                     </xs:complexType>
@@ -243,6 +247,7 @@
                                     </xs:choice>
                                     <xs:attribute name="name" type="g_string"/>
                                     <xs:attribute name="parent" type="g_string"/>
+                                    <xs:attribute name="className" type="g_string" default="Vehicle"/>
                                     <xs:attribute name="filename" type="g_string"/>
                                 </xs:complexType>
                             </xs:element>
@@ -269,6 +274,7 @@
                                     <xs:attribute name="name" type="g_string"/>
                                     <xs:attribute name="title" type="g_string"/>
                                     <xs:attribute name="image" type="g_string"/>
+                                    <xs:attribute name="imageOffset" type="g_float" default="0"/>
                                 </xs:complexType>
                             </xs:element>
                         </xs:choice>
@@ -399,6 +405,10 @@
                                     <xs:attribute name="name" type="g_string"/>
                                     <xs:attribute name="category" type="g_string"/>
                                     <xs:attribute name="axisType" type="g_string"/>
+                                    <xs:attribute name="locked" type="g_bool"/>
+                                    <xs:attribute name="ignoreComboMask" type="g_bool"/>
+                                    <xs:attribute name="isMobileAction" type="g_bool"/>
+                                    <xs:attribute name="displayCategory" type="g_string"/>
                                 </xs:complexType>
                             </xs:element>
                         </xs:choice>

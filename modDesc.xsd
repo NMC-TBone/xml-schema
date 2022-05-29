@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:simpleType name="g_hyphen">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="-"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="g_float_or_hyphen">
+        <xs:union memberTypes="xs:float g_hyphen"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="g_vector_float">
+        <xs:list itemType="g_float_or_hyphen"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="g_string">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="g_l10n_string">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="g_float">
+        <xs:restriction base="xs:float"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="g_angle">
+        <xs:restriction base="xs:float"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="g_time">
+        <xs:restriction base="xs:float"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="g_int">
+        <xs:restriction base="xs:integer"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="g_bool">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="true|false"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="g_node_index">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="g_node_indices">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="g_vector_2">
+        <xs:restriction base="g_vector_float">
+            <xs:pattern value="\S+ \S+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="g_vector_3">
+        <xs:restriction base="g_vector_float">
+            <xs:pattern value="\S+ \S+ \S+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="g_vector_4">
+        <xs:restriction base="g_vector_float">
+            <xs:pattern value="\S+ \S+ \S+ \S+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="g_vector_n">
+        <xs:restriction base="g_vector_float"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="g_vector_trans">
+        <xs:restriction base="g_vector_float">
+            <xs:pattern value="\S+ \S+ \S+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="g_vector_rot">
+        <xs:restriction base="g_vector_float">
+            <xs:pattern value="\S+ \S+ \S+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="g_vector_rot_2">
+        <xs:restriction base="g_vector_float">
+            <xs:pattern value="\S+ \S+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="g_vector_scale">
+        <xs:restriction base="g_vector_float">
+            <xs:pattern value="\S+ \S+ \S+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="g_color">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+
+    <xs:element name="modDesc">
+        <xs:complexType>
+            <xs:all>
+                <xs:element name="author" type="g_string" minOccurs="1">
+                    <xs:annotation><xs:documentation xml:lang="en">Author of the mod (e.g My Mod Team)</xs:documentation></xs:annotation>
+                </xs:element>
+                <xs:element name="contributors" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element name="contributor" type="g_string" minOccurs="0"/>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="version" type="g_string" default="1.0.0.0">
+                    <xs:annotation><xs:documentation xml:lang="en">Version of the mod</xs:documentation></xs:annotation>
+                </xs:element>
+                <xs:element name="title" minOccurs="1">
+                    <xs:complexType>
+                        <xs:all>
+                            <xs:element name="en" type="g_string" minOccurs="1">
+                                <xs:annotation><xs:documentation xml:lang="en">Title language: English</xs:documentation></xs:annotation>
+                            </xs:element>
+                            <xs:element name="de" type="g_string" minOccurs="0"/>
+                            <xs:element name="jp" type="g_string" minOccurs="0"/>
+                            <xs:element name="pl" type="g_string" minOccurs="0"/>
+                            <xs:element name="cz" type="g_string" minOccurs="0"/>
+                            <xs:element name="fr" type="g_string" minOccurs="0"/>
+                            <xs:element name="es" type="g_string" minOccurs="0"/>
+                            <xs:element name="ru" type="g_string" minOccurs="0"/>
+                            <xs:element name="it" type="g_string" minOccurs="0"/>
+                            <xs:element name="pt" type="g_string" minOccurs="0"/>
+                            <xs:element name="hu" type="g_string" minOccurs="0"/>
+                            <xs:element name="nl" type="g_string" minOccurs="0"/>
+                            <xs:element name="cs" type="g_string" minOccurs="0"/>
+                            <xs:element name="ct" type="g_string" minOccurs="0"/>
+                            <xs:element name="br" type="g_string" minOccurs="0"/>
+                            <xs:element name="tr" type="g_string" minOccurs="0"/>
+                            <xs:element name="ro" type="g_string" minOccurs="0"/>
+                            <xs:element name="kr" type="g_string" minOccurs="0"/>
+                            <xs:element name="ea" type="g_string" minOccurs="0"/>
+                            <xs:element name="da" type="g_string" minOccurs="0"/>
+                            <xs:element name="fi" type="g_string" minOccurs="0"/>
+                            <xs:element name="no" type="g_string" minOccurs="0"/>
+                            <xs:element name="sv" type="g_string" minOccurs="0"/>
+                            <xs:element name="fc" type="g_string" minOccurs="0"/>
+                        </xs:all>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="description" minOccurs="1">
+                    <xs:complexType>
+                        <xs:all>
+                            <xs:element name="en" type="g_string" minOccurs="1">
+                                <xs:annotation><xs:documentation xml:lang="en">Description language: English</xs:documentation></xs:annotation>
+                            </xs:element>
+                            <xs:element name="de" type="g_string" minOccurs="0"/>
+                            <xs:element name="jp" type="g_string" minOccurs="0"/>
+                            <xs:element name="pl" type="g_string" minOccurs="0"/>
+                            <xs:element name="cz" type="g_string" minOccurs="0"/>
+                            <xs:element name="fr" type="g_string" minOccurs="0"/>
+                            <xs:element name="es" type="g_string" minOccurs="0"/>
+                            <xs:element name="ru" type="g_string" minOccurs="0"/>
+                            <xs:element name="it" type="g_string" minOccurs="0"/>
+                            <xs:element name="pt" type="g_string" minOccurs="0"/>
+                            <xs:element name="hu" type="g_string" minOccurs="0"/>
+                            <xs:element name="nl" type="g_string" minOccurs="0"/>
+                            <xs:element name="cs" type="g_string" minOccurs="0"/>
+                            <xs:element name="ct" type="g_string" minOccurs="0"/>
+                            <xs:element name="br" type="g_string" minOccurs="0"/>
+                            <xs:element name="tr" type="g_string" minOccurs="0"/>
+                            <xs:element name="ro" type="g_string" minOccurs="0"/>
+                            <xs:element name="kr" type="g_string" minOccurs="0"/>
+                            <xs:element name="ea" type="g_string" minOccurs="0"/>
+                            <xs:element name="da" type="g_string" minOccurs="0"/>
+                            <xs:element name="fi" type="g_string" minOccurs="0"/>
+                            <xs:element name="no" type="g_string" minOccurs="0"/>
+                            <xs:element name="sv" type="g_string" minOccurs="0"/>
+                            <xs:element name="fc" type="g_string" minOccurs="0"/>
+                        </xs:all>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="iconFilename" type="g_string" minOccurs="1"/>
+                <xs:element name="multiplayer" minOccurs="1">
+                    <xs:complexType>
+                        <xs:attribute name="supported" type="g_bool" default="true">
+                            <xs:annotation><xs:documentation xml:lang="en">If set to false mod will not work in multiplayer</xs:documentation></xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="only" type="g_bool" default="false">
+                            <xs:annotation><xs:documentation xml:lang="en">If set to true mod will be multiplayer supported only</xs:documentation></xs:annotation>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="maps" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element name="map" minOccurs="1">
+                                <xs:complexType>
+                                    <xs:choice maxOccurs="unbounded">
+                                        <xs:element name="title" minOccurs="1">
+                                            <xs:complexType>
+                                                <xs:all>
+                                                    <xs:element name="en" type="g_string" minOccurs="1">
+                                                        <xs:annotation><xs:documentation xml:lang="en">Title language: English</xs:documentation></xs:annotation>
+                                                    </xs:element>
+                                                    <xs:element name="de" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="jp" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="pl" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="cz" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="fr" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="es" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="ru" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="it" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="pt" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="hu" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="nl" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="cs" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="ct" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="br" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="tr" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="ro" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="kr" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="ea" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="da" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="fi" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="no" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="sv" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="fc" type="g_string" minOccurs="0"/>
+                                                </xs:all>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="description" minOccurs="1">
+                                            <xs:complexType>
+                                                <xs:all>
+                                                    <xs:element name="en" type="g_string" minOccurs="1">
+                                                        <xs:annotation><xs:documentation xml:lang="en">Description language: English</xs:documentation></xs:annotation>
+                                                    </xs:element>
+                                                    <xs:element name="de" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="jp" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="pl" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="cz" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="fr" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="es" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="ru" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="it" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="pt" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="hu" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="nl" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="cs" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="ct" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="br" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="tr" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="ro" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="kr" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="ea" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="da" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="fi" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="no" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="sv" type="g_string" minOccurs="0"/>
+                                                    <xs:element name="fc" type="g_string" minOccurs="0"/>
+                                                </xs:all>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="iconFilename" type="g_string" minOccurs="1"/>
+                                    </xs:choice>
+                                    <xs:attribute name="id" type="g_string" use="required">
+                                        <xs:annotation><xs:documentation xml:lang="en">id of the map</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="className" type="g_string" fixed="Mission00">
+                                        <xs:annotation><xs:documentation xml:lang="en">className</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="filename" type="g_string" fixed="$dataS/scripts/missions/mission00.lua">
+                                        <xs:annotation><xs:documentation xml:lang="en">Script path</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="configFilename" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Path to map.xml</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="defaultVehiclesXMLFilename" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Path to vehicles.xml</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="defaultPlaceablesXMLFilename" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Path to placeables.xml</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="defaultItemsXMLFilename" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Path to items.xml</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="storeItems" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element name="storeItem" minOccurs="1">
+                                <xs:complexType>
+                                    <xs:attribute name="xmlFilename" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Path to XML file to be loaded in game</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="vehicleTypes" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element name="type" minOccurs="1">
+                                <xs:complexType>
+                                    <xs:choice maxOccurs="unbounded">
+                                        <xs:element name="specialization" minOccurs="1">
+                                            <xs:complexType>
+                                                <xs:attribute name="name" type="g_string">
+                                                    <xs:annotation><xs:documentation xml:lang="en">Specialization name</xs:documentation></xs:annotation>
+                                                </xs:attribute>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:choice>
+                                    <xs:attribute name="name" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Name of the vehicleType</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="parent" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Name of vehicleType parent</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="filename" type="g_string" default="$dataS/scripts/vehicles/Vehicle.lua">
+                                        <xs:annotation><xs:documentation xml:lang="en">Path to type script</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="placeableTypes" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element name="type" minOccurs="1">
+                                <xs:complexType>
+                                    <xs:choice maxOccurs="unbounded">
+                                        <xs:element name="specialization" minOccurs="1">
+                                            <xs:complexType>
+                                                <xs:attribute name="name" type="g_string">
+                                                    <xs:annotation><xs:documentation xml:lang="en">Specialization name</xs:documentation></xs:annotation>
+                                                </xs:attribute>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:choice>
+                                    <xs:attribute name="name" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Name of the placeableType</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="parent" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Name of placeableType parent</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="filename" type="g_string" default="$dataS/scripts/placeables/Placeable.lua">
+                                        <xs:annotation><xs:documentation xml:lang="en">Path to type script</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="brandColors" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element name="color" minOccurs="1">
+                                <xs:complexType>
+                                    <xs:attribute name="name" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Name of brandColor (e.g YOURBRAND_BLUE1)</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="value" type="g_color" default="1 1 1 1">
+                                        <xs:annotation><xs:documentation xml:lang="en">Color value 1: red, 2: green, 3: blue, 4: type of material (1 1 1 1: white plastic)</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="brands" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element name="brand" minOccurs="1">
+                                <xs:complexType>
+                                    <xs:attribute name="name" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Brand name to link between modDesc and the XML (e.g YOURBRAND)</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="title" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Title is the display name of the brand in game</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="image" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Path to brand icon</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="imageOffset" type="g_float">
+                                        <xs:annotation><xs:documentation xml:lang="en">Brand icon offset</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="specializations" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element name="specialization" minOccurs="1">
+                                <xs:complexType>
+                                    <xs:attribute name="name" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Specialization name</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="className" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Custom className</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="filename" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Path to custom lua script</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="placeableSpecializations" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element name="specialization" minOccurs="1">
+                                <xs:complexType>
+                                    <xs:attribute name="name" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Specialization name</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="className" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Custom className</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="filename" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Path to custom lua script</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="extraSourceFiles" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element name="sourceFile" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:attribute name="filename" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Path to custom lua script</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="dependencies" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element name="dependency" type="g_string" minOccurs="1">
+                                <xs:annotation><xs:documentation xml:lang="en">Name of the required mod you want to add (e.g FS22_yourMod_tractor)</xs:documentation></xs:annotation>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="jointTypes" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element name="jointType" minOccurs="1">
+                                <xs:complexType>
+                                    <xs:attribute name="name" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Custom joint name to be reffered to in XML</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="materialHolders" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element name="materialHolder" minOccurs="1">
+                                <xs:complexType>
+                                    <xs:attribute name="filename" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Path to custom material holders</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="storePacks" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element name="storePack" minOccurs="1">
+                                <xs:complexType>
+                                    <xs:attribute name="name" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Custom storePack name to be reffered in XML</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="title" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Display name of the store pack</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="image" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Path to store pack icon</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="connectionHoses" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element name="connectionHose" minOccurs="1">
+                                <xs:complexType>
+                                    <xs:attribute name="xmlFilename" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Path to custom connection hose xml file</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="bales" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element name="bale" minOccurs="1">
+                                <xs:complexType>
+                                    <xs:attribute name="filename" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Path to custom bale i3d file</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="vehicleSchemaOverlays" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element name="overlay" minOccurs="1">
+                                <xs:complexType>
+                                    <xs:attribute name="name" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Name of schema to link in XML file</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="uvs" type="g_string" default="0px 0px 0px 0px">
+                                        <xs:annotation><xs:documentation xml:lang="en">Position of the schema icon in the image file</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="size" type="g_string" default="26px 20px">
+                                        <xs:annotation><xs:documentation xml:lang="en">Display size of the schema in game</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                        <xs:attribute name="filename" type="g_string">
+                            <xs:annotation><xs:documentation xml:lang="en">Path to image file</xs:documentation></xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="imageSize" type="g_vector_2" default="256 256">
+                            <xs:annotation><xs:documentation xml:lang="en">Size of the image</xs:documentation></xs:annotation>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="axisIcons" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element name="icon" minOccurs="1">
+                                <xs:complexType>
+                                    <xs:attribute name="name" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Name of axisIcon</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="filename" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Path to image file</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="actions" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element name="action" minOccurs="1">
+                                <xs:complexType>
+                                    <xs:attribute name="name" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Action name</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="category" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Category (VEHICLE, SYSTEM, ONFOOT)</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="axisType" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">axisType (FULL, HALF)</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="locked" type="g_bool" default="false">
+                                        <xs:annotation><xs:documentation xml:lang="en">If true the action cannot be changed in settings in game</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="displayCategory" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Where it will be placed within the keybinding settings in game (default game values: PLAYER_MOVEMENT, CONSTRUCTION, VEHICLE_DRIVING, PLAYER_INTERACTIVE, GAME, VEHICLE, VEHICLE_WORK, VEHICLE_FRONTLOADER, CRANE, PLACEABLE, VEHICLE_GEARBOX, VEHICLE_LIGHTS</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="inputBinding" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element name="actionBinding" minOccurs="1">
+                                <xs:complexType>
+                                    <xs:choice maxOccurs="unbounded">
+                                        <xs:element name="binding" minOccurs="1">
+                                            <xs:complexType>
+                                                <xs:attribute name="device" type="g_string">
+                                                    <xs:annotation><xs:documentation xml:lang="en">Which device to use (default game: KB_MOUSE_DEFAULT, GAMEPAD_DEFAULT)</xs:documentation></xs:annotation>
+                                                </xs:attribute>
+                                                <xs:attribute name="input" type="g_string">
+                                                    <xs:annotation><xs:documentation xml:lang="en">Which key to be bined (e.g MOUSE_BUTTON_LEFT, KEY_space, KEY_x)</xs:documentation></xs:annotation>
+                                                </xs:attribute>
+                                                <xs:attribute name="axisComponent" type="g_string">
+                                                    <xs:annotation><xs:documentation xml:lang="en">Determines if it will be negative or postivite direction -/+</xs:documentation></xs:annotation>
+                                                </xs:attribute>
+                                                <xs:attribute name="inputComponent" type="g_string">
+                                                    <xs:annotation><xs:documentation xml:lang="en">Determines if it will be negative or postivite direction -/+</xs:documentation></xs:annotation>
+                                                </xs:attribute>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:choice>
+                                    <xs:attribute name="action" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">Name of the action (e.g AXIS_CRANE_ARM)</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="fillTypes" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:attribute name="filename" type="g_string" default="true">
+                            <xs:annotation><xs:documentation xml:lang="en">Path to fillType xml file</xs:documentation></xs:annotation>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="missionVehicles" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:attribute name="filename" type="g_string" default="true">
+                            <xs:annotation><xs:documentation xml:lang="en">Path to mission vehicles xml file</xs:documentation></xs:annotation>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="l10n" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element name="text" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:all>
+                                        <xs:element name="en" type="g_string" minOccurs="1"/>
+                                        <xs:element name="de" type="g_string" minOccurs="0"/>
+                                        <xs:element name="jp" type="g_string" minOccurs="0"/>
+                                        <xs:element name="pl" type="g_string" minOccurs="0"/>
+                                        <xs:element name="cz" type="g_string" minOccurs="0"/>
+                                        <xs:element name="fr" type="g_string" minOccurs="0"/>
+                                        <xs:element name="es" type="g_string" minOccurs="0"/>
+                                        <xs:element name="ru" type="g_string" minOccurs="0"/>
+                                        <xs:element name="it" type="g_string" minOccurs="0"/>
+                                        <xs:element name="pt" type="g_string" minOccurs="0"/>
+                                        <xs:element name="hu" type="g_string" minOccurs="0"/>
+                                        <xs:element name="nl" type="g_string" minOccurs="0"/>
+                                        <xs:element name="cs" type="g_string" minOccurs="0"/>
+                                        <xs:element name="ct" type="g_string" minOccurs="0"/>
+                                        <xs:element name="br" type="g_string" minOccurs="0"/>
+                                        <xs:element name="tr" type="g_string" minOccurs="0"/>
+                                        <xs:element name="ro" type="g_string" minOccurs="0"/>
+                                        <xs:element name="kr" type="g_string" minOccurs="0"/>
+                                        <xs:element name="ea" type="g_string" minOccurs="0"/>
+                                        <xs:element name="da" type="g_string" minOccurs="0"/>
+                                        <xs:element name="fi" type="g_string" minOccurs="0"/>
+                                        <xs:element name="no" type="g_string" minOccurs="0"/>
+                                        <xs:element name="sv" type="g_string" minOccurs="0"/>
+                                        <xs:element name="fc" type="g_string" minOccurs="0"/>
+                                    </xs:all>
+                                    <xs:attribute name="name" type="g_string">
+                                        <xs:annotation><xs:documentation xml:lang="en">l10n refference name from xml file e.g xml file: l10n_storeItem_myHouse | modDesc: storeItem_myHouse</xs:documentation></xs:annotation>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                        <xs:attribute name="filename" type="g_string">
+                            <xs:annotation><xs:documentation xml:lang="en">Filename prefix for separate translation.xml files</xs:documentation></xs:annotation>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+            </xs:all>
+            <xs:attribute name="descVersion" type="g_int" default="66">
+                <xs:annotation><xs:documentation xml:lang="en">descVersion, usually updated for each new larger game update. Update 1.5: descVersion="66"</xs:documentation></xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

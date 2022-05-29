@@ -677,7 +677,7 @@
                                 </xs:complexType>
                             </xs:element>
                         </xs:choice>
-                        <xs:attribute name="filename" type="g_string">
+                        <xs:attribute name="filenamePrefix" type="g_string">
                             <xs:annotation><xs:documentation xml:lang="en">Filename prefix for separate translation.xml files</xs:documentation></xs:annotation>
                         </xs:attribute>
                     </xs:complexType>

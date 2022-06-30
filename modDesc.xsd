@@ -683,8 +683,8 @@
                     </xs:complexType>
                 </xs:element>
             </xs:all>
-            <xs:attribute name="descVersion" type="g_int" default="66">
-                <xs:annotation><xs:documentation xml:lang="en">descVersion, usually updated for each new larger game update. Update 1.5: descVersion="66"</xs:documentation></xs:annotation>
+            <xs:attribute name="descVersion" type="g_int" default="67">
+                <xs:annotation><xs:documentation xml:lang="en">descVersion, usually updated for each new larger game update. Update 1.6: descVersion="67"</xs:documentation></xs:annotation>
             </xs:attribute>
         </xs:complexType>
     </xs:element>

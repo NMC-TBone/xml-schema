@@ -111,7 +111,7 @@
                 <xs:element name="contributors" minOccurs="0" maxOccurs="1">
                     <xs:complexType>
                         <xs:choice maxOccurs="unbounded">
-                            <xs:element name="contributor" type="g_string"/>
+                            <xs:element name="contributor" type="g_string" minOccurs="0"/>
                         </xs:choice>
                     </xs:complexType>
                 </xs:element>
